@@ -103,21 +103,16 @@ var questions = [
         }
 
         function checkAnswer() {
-            var selectedOption = document.querySelector('input[name="answer"]:checked');
-            if (!selectedOption) {
-                return false;
-            }
-            return selectedOption.id === questions[currentQuestion].correct;
-        }
+    var selectedOption = document.querySelector('input[name="answer"]:checked');
+    if (!selectedOption) {
+        return true; // Allow submission without selection
+    }
+    return selectedOption.id === questions[currentQuestion].correct;
+}
 
         function nextQuestion() {
-    if (!checkAnswer()) {
-        alert("Please select an option.");
-        return;
-    }
-
     var selectedOption = document.querySelector('input[name="answer"]:checked');
-    if (selectedOption.id === questions[currentQuestion].correct) {
+    if (selectedOption && selectedOption.id === questions[currentQuestion].correct) {
         score++;
     }
 
