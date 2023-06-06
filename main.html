@@ -111,8 +111,13 @@ var questions = [
 }
 
         function nextQuestion() {
+	    if (!checkAnswer()) {
+        alert("Please select an option.");
+        return;
+    }
+
     var selectedOption = document.querySelector('input[name="answer"]:checked');
-    if (selectedOption && selectedOption.id === questions[currentQuestion].correct) {
+    if (selectedOption.id === questions[currentQuestion].correct) {
         score++;
     }
 
@@ -132,7 +137,7 @@ var questions = [
             quiz.innerHTML = '';
 
             var result = document.createElement('h2');
-            result.textContent = 'You answered ' + score + '/' + questions.length +' questions correctly';
+            result.textContent = 'You answered ' + score + '/' + questions.length +'questions correctly';
             quiz.appendChild(result);
 
             var reloadButton = document.createElement('button');
