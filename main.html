@@ -35,6 +35,7 @@
                 <span id="d_text">JavaScript</span>
             </label>
             <br>
+			
             <button id="submit" onclick="nextQuestion()">Submit</button>
         </div>
     </div>
@@ -79,7 +80,7 @@ var questions = [
         var score = 0;
 
         function loadQuestion() {
-            
+            var quiz = document.getElementById('quiz');
             var questionElement = document.getElementById('question');
             var optionA = document.getElementById('a_text');
             var optionB = document.getElementById('b_text');
@@ -93,6 +94,12 @@ var questions = [
             optionB.textContent = currentQuiz.b;
             optionC.textContent = currentQuiz.c;
             optionD.textContent = currentQuiz.d;
+
+            // Reset radio button selection
+            document.getElementById('a').checked = false;
+            document.getElementById('b').checked = false;
+            document.getElementById('c').checked = false;
+            document.getElementById('d').checked = false;
         }
 
         function checkAnswer() {
